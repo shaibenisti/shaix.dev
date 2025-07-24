@@ -1189,6 +1189,13 @@ body:has(.payment-grid) .card:hover::before {
         justify-content: center !important;
     }
 
+    /* Contact page avatar should be larger for better visibility */
+    .contact-header .avatar {
+        width: 120px !important;
+        height: 120px !important;
+        margin: 0 auto 2rem !important;
+    }
+
     .avatar img {
         width: 100% !important;
         height: 100% !important;
@@ -2023,6 +2030,10 @@ ontact Page Styles */
 .contact-header .avatar {
     display: block;
     margin: 0 auto 2rem;
+    box-shadow: 0 0 50px rgba(139, 69, 255, 0.5);
+    border: 3px solid transparent;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    background-clip: padding-box;
 }
 
 .professional-contact {
@@ -2649,6 +2660,13 @@ ontact Page Styles */
         width: 70px;
         height: 70px;
         margin: 0 auto 1rem;
+    }
+    
+    /* Contact page avatar larger even on very small screens */
+    .contact-header .avatar {
+        width: 100px !important;
+        height: 100px !important;
+        margin: 0 auto 1.5rem !important;
     }
     
     /* Subtitle for very small screens */
