@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Options - Shai Benisti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-container">
+        <canvas id="background-canvas"></canvas>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">SB</a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link" data-en="Home" data-he="בית">Home</a></li>
+                <li><a href="contact.html" class="nav-link" data-en="Contact" data-he="צור קשר">Contact</a></li>
+                <li><a href="pay.html" class="nav-link" data-en="Payment" data-he="תשלום">Payment</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="language-switch" onclick="toggleLanguage()">
+                    <span id="lang-indicator">🇮🇱</span>
+                </button>
+                <button class="theme-switch" onclick="toggleTheme()">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="card">
+                <div class="card-glow"></div>
+                
+                <!-- Header -->
+                <section class="payment-header">
+                    <div class="avatar">
+                        <span>💳</span>
+                    </div>
+                    <h1 data-en="Payment Options" data-he="אפשרויות תשלום">Payment Options</h1>
+                    <p class="subtitle" data-en="Multiple secure payment methods for your convenience. Choose the option that works best for you." data-he="מספר שיטות תשלום מאובטחות לנוחותכם. בחרו את האפשרות הכי נוחה לכם.">Multiple secure payment methods for your convenience. Choose the option that works best for you.</p>
+                </section>
+
+                <!-- Primary Payment Methods -->
+                <section class="primary-payments">
+                    <h2 class="section-title" data-en="Primary Payment Methods" data-he="שיטות תשלום עיקריות">Primary Payment Methods</h2>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-method featured">
+                            <div class="payment-icon paypal-bg">
+                                <i class="fab fa-paypal"></i>
+                            </div>
+                            <div class="payment-info">
+                                <h3>PayPal</h3>
+                                <p data-en="International payments • Buyer protection • Instant processing" data-he="תשלומים בינלאומיים • הגנת קונה • עיבוד מיידי">International payments • Buyer protection • Instant processing</p>
+                                <div class="payment-button-container">
+                                    <a href="https://paypal.me/ShaiBenisti?locale.x=he_IL&country.x=IL" 
+                                       class="payment-button paypal-btn" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer">
+                                        <i class="fab fa-paypal"></i>
+                                        <span data-en="Pay with PayPal" data-he="שלם עם PayPal">Pay with PayPal</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="payment-method featured">
+                            <div class="payment-icon bit-bg">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="payment-info">
+                                <h3>Bit</h3>
+                                <p data-en="Israeli mobile payments • Fast & secure • No fees" data-he="תשלומים ישראליים • מהיר ומאובטח • ללא עמלות">Israeli mobile payments • Fast & secure • No fees</p>
+                                <div class="bit-payment-container">
+                                    <div class="qr-container">
+                                        <img src="BIT.jpg" alt="Bit QR Code" class="qr-code">
+                                    </div>
+                                    <p class="qr-instruction" data-en="Open Bit app and scan QR code to pay" data-he="פתחו את אפליקציית ביט וסרקו את הקוד לתשלום">Open Bit app and scan QR code to pay</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Cryptocurrency Payments -->
+                <section class="crypto-payments">
+                    <h2 class="section-title" data-en="Cryptocurrency Payments" data-he="תשלומים במטבעות דיגיטליים">Cryptocurrency Payments</h2>
+                    <p class="crypto-subtitle" data-en="Decentralized payments • Low fees • Global accessibility" data-he="תשלומים מבוזרים • עמלות נמוכות • נגישות גלובלית">Decentralized payments • Low fees • Global accessibility</p>
+                    
+                    <div class="crypto-grid">
+                        <div class="crypto-wallet">
+                            <div class="wallet-header">
+                                <div class="wallet-icon solana-bg">
+                                    <span>◎</span>
+                                </div>
+                                <div class="wallet-info">
+                                    <h3>Solana</h3>
+                                    <span class="wallet-tag">Fast & Low Fees</span>
+                                </div>
+                            </div>
+                            <div class="wallet-address" id="solana-address">FaQeyS5VCox1H12NjdobUHva4VoRuKpVYhZAr4MRbH39</div>
+                            <button class="copy-button" onclick="copyAddress('solana-address', this)">
+                                <i class="fas fa-copy"></i>
+                                <span data-en="Copy Address" data-he="העתק כתובת">Copy Address</span>
+                            </button>
+                        </div>
+
+                        <div class="crypto-wallet">
+                            <div class="wallet-header">
+                                <div class="wallet-icon bitcoin-bg">
+                                    <span>₿</span>
+                                </div>
+                                <div class="wallet-info">
+                                    <h3>Bitcoin</h3>
+                                    <span class="wallet-tag">Taproot</span>
+                                </div>
+                            </div>
+                            <div class="wallet-address" id="btc-taproot-address">bc1p0qm4c5st2857ayd5s3n30af3n6d4w68tjq8mcxn7vcr3h3h0ef6s5lzrjd</div>
+                            <button class="copy-button" onclick="copyAddress('btc-taproot-address', this)">
+                                <i class="fas fa-copy"></i>
+                                <span data-en="Copy Address" data-he="העתק כתובת">Copy Address</span>
+                            </button>
+                        </div>
+
+                        <div class="crypto-wallet">
+                            <div class="wallet-header">
+                                <div class="wallet-icon bitcoin-bg">
+                                    <span>₿</span>
+                                </div>
+                                <div class="wallet-info">
+                                    <h3>Bitcoin</h3>
+                                    <span class="wallet-tag">SegWit</span>
+                                </div>
+                            </div>
+                            <div class="wallet-address" id="btc-segwit-address">bc1qkuy9x4k4909qem9kzpesefl5l7hgguxydaeqzk</div>
+                            <button class="copy-button" onclick="copyAddress('btc-segwit-address', this)">
+                                <i class="fas fa-copy"></i>
+                                <span data-en="Copy Address" data-he="העתק כתובת">Copy Address</span>
+                            </button>
+                        </div>
+
+                        <div class="crypto-wallet">
+                            <div class="wallet-header">
+                                <div class="wallet-icon ethereum-bg">
+                                    <span>Ξ</span>
+                                </div>
+                                <div class="wallet-info">
+                                    <h3>Ethereum</h3>
+                                    <span class="wallet-tag">ERC-20</span>
+                                </div>
+                            </div>
+                            <div class="wallet-address" id="eth-address">0xc43FcDa68f6bBD60195d226dC614B77Ce678E88F</div>
+                            <button class="copy-button" onclick="copyAddress('eth-address', this)">
+                                <i class="fas fa-copy"></i>
+                                <span data-en="Copy Address" data-he="העתק כתובת">Copy Address</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Payment Security -->
+                <section class="payment-security">
+                    <div class="security-content">
+                        <h2 data-en="Secure & Professional" data-he="מאובטח ומקצועי">Secure & Professional</h2>
+                        <p data-en="All payment methods are secured with industry-standard encryption. Your financial information is protected and never stored on our servers." data-he="כל שיטות התשלום מאובטחות בהצפנה ברמה תעשייתית. המידע הפיננסי שלכם מוגן ולעולם לא נשמר בשרתים שלנו.">All payment methods are secured with industry-standard encryption. Your financial information is protected and never stored on our servers.</p>
+                        <div class="security-features">
+                            <div class="security-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span data-en="SSL Encrypted" data-he="הצפנת SSL">SSL Encrypted</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fas fa-lock"></i>
+                                <span data-en="Secure Processing" data-he="עיבוד מאובטח">Secure Processing</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span data-en="Verified Merchant" data-he="סוחר מאומת">Verified Merchant</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

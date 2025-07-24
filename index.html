@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shai Benisti - AI Developer & Automation Expert</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-container">
+        <canvas id="background-canvas"></canvas>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">SB</a>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link" data-en="Home" data-he="בית">Home</a></li>
+                <li><a href="contact.html" class="nav-link" data-en="Contact" data-he="צור קשר">Contact</a></li>
+                <li><a href="pay.html" class="nav-link" data-en="Payment" data-he="תשלום">Payment</a></li>
+            </ul>
+
+            <div class="nav-controls">
+                <button class="language-switch" onclick="toggleLanguage()">
+                    <span id="lang-indicator">🇮🇱</span>
+                </button>
+                <button class="theme-switch" onclick="toggleTheme()">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="card">
+                <div class="card-glow"></div>
+
+                <!-- Hero Section -->
+                <section class="hero-section">
+                    <div class="avatar">
+                        <span>S</span>
+                    </div>
+                    <h1 class="hero-title" data-en="Shai Benisti" data-he="שי בניסטי">Shai Benisti</h1>
+                    <p class="hero-subtitle"
+                        data-en="AI Developer & Automation Expert<br>Building intelligent solutions that transform businesses"
+                        data-he="מפתח AI ומומחה אוטומציה<br>בונה פתרונות חכמים שמשנים עסקים">AI Developer & Automation
+                        Expert<br>Building intelligent solutions that transform businesses</p>
+
+                    <div class="cta-buttons">
+                        <a href="contact.html" class="cta-button">
+                            <i class="fas fa-handshake"></i>
+                            <span data-en="Let's Work Together" data-he="בואו נעבוד יחד">Let's Work Together</span>
+                        </a>
+                        <a href="pay.html" class="cta-button secondary">
+                            <i class="fas fa-credit-card"></i>
+                            <span data-en="Payment Options" data-he="אפשרויות תשלום">Payment Options</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Services Section -->
+                <section class="services-section">
+                    <h2 class="section-title" data-en="Professional Services" data-he="שירותים מקצועיים">Professional
+                        Services</h2>
+
+                    <div class="services-list">
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3 data-en="AI Chatbots & Virtual Assistants" data-he="צ'אטבוטים וסייעים וירטואליים">AI
+                                    Chatbots & Virtual Assistants</h3>
+                                <p data-en="Intelligent conversational AI solutions that provide 24/7 customer support and automate interactions"
+                                    data-he="פתרונות בינה מלאכותית שיחתית חכמה המספקים תמיכה 24/7 ומאטמטים אינטראקציות">
+                                    Intelligent conversational AI solutions that provide 24/7 customer support and
+                                    automate interactions</p>
+                            </div>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3 data-en="Business Process Automation" data-he="אוטומציה של תהליכים עסקיים">Business
+                                    Process Automation</h3>
+                                <p data-en="Streamline workflows, eliminate repetitive tasks, and increase efficiency with custom automation solutions"
+                                    data-he="ייעול תהליכי עבודה, ביטול משימות חוזרות והגברת יעילות עם פתרונות אוטומציה מותאמים">
+                                    Streamline workflows, eliminate repetitive tasks, and increase efficiency with
+                                    custom automation solutions</p>
+                            </div>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3 data-en="Web Application Development" data-he="פיתוח אפליקציות ווב">Web Application
+                                    Development</h3>
+                                <p data-en="Modern, responsive web applications built with cutting-edge technologies and best practices"
+                                    data-he="אפליקציות ווב מודרניות ורספונסיביות הבנויות עם טכנולוגיות מתקדמות ושיטות עבודה מומלצות">
+                                    Modern, responsive web applications built with cutting-edge technologies and best
+                                    practices</p>
+                            </div>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3 data-en="API Development & Integration" data-he="פיתוח ואינטגרציה של API">API
+                                    Development & Integration</h3>
+                                <p data-en="Connect and integrate different systems seamlessly with robust API solutions and third-party integrations"
+                                    data-he="חיבור ואינטגרציה של מערכות שונות בצורה חלקה עם פתרונות API חזקים ואינטגרציות צד שלישי">
+                                    Connect and integrate different systems seamlessly with robust API solutions and
+                                    third-party integrations</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Technologies Section -->
+                <section class="tech-section">
+                    <h2 class="section-title" data-en="Technologies & Tools" data-he="טכנולוגיות וכלים">Technologies &
+                        Tools</h2>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-js-square"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-brain"></i>
+                            <span>AI/ML</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-database"></i>
+                            <span>Databases</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-react"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-cloud"></i>
+                            <span>Cloud Services</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

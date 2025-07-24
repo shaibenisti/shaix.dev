@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Shai Benisti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-container">
+        <canvas id="background-canvas"></canvas>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">SB</a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link" data-en="Home" data-he="בית">Home</a></li>
+                <li><a href="contact.html" class="nav-link" data-en="Contact" data-he="צור קשר">Contact</a></li>
+                <li><a href="pay.html" class="nav-link" data-en="Payment" data-he="תשלום">Payment</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="language-switch" onclick="toggleLanguage()">
+                    <span id="lang-indicator">🇮🇱</span>
+                </button>
+                <button class="theme-switch" onclick="toggleTheme()">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="card">
+                <div class="card-glow"></div>
+                
+                <!-- Header -->
+                <section class="contact-header">
+                    <div class="avatar">
+                        <span>S</span>
+                    </div>
+                    <h1 data-en="Let's Connect" data-he="בואו נתחבר">Let's Connect</h1>
+                    <p class="subtitle" data-en="Have a project in mind? I respond within 24 hours and offer free consultations to discuss how AI and automation can transform your business." data-he="יש לכם פרויקט בראש? אני עונה תוך 24 שעות ומציע ייעוץ חינם כדי לדון איך AI ואוטומציה יכולים לשנות את העסק שלכם.">Have a project in mind? I respond within 24 hours and offer free consultations to discuss how AI and automation can transform your business.</p>
+                </section>
+
+                <!-- Professional Contact -->
+                <section class="professional-contact">
+                    <h2 class="section-title" data-en="Professional Contact" data-he="קשר מקצועי">Professional Contact</h2>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method primary">
+                            <div class="contact-icon email-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3 data-en="Email" data-he="אימייל">Email</h3>
+                                <a href="mailto:shaix65@gmail.com" class="contact-link">shaix65@gmail.com</a>
+                                <p class="contact-note" data-en="Best for detailed project discussions" data-he="הכי טוב לדיונים מפורטים על פרויקטים">Best for detailed project discussions</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method primary">
+                            <div class="contact-icon whatsapp-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>WhatsApp</h3>
+                                <a href="https://wa.me/message/5EEUGMK4PF7OJ1" class="contact-link" data-en="Send Message" data-he="שלח הודעה">Send Message</a>
+                                <p class="contact-note" data-en="Quick questions and consultations" data-he="שאלות מהירות וייעוצים">Quick questions and consultations</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Social Media -->
+                <section class="social-media">
+                    <h2 class="section-title" data-en="Social Media" data-he="רשתות חברתיות">Social Media</h2>
+                    
+                    <div class="social-grid">
+                        <div class="social-item">
+                            <div class="contact-icon github-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="social-info">
+                                <h3>GitHub</h3>
+                                <a href="https://github.com/shaibenisti" class="contact-link" target="_blank" rel="noopener noreferrer">View My Code</a>
+                            </div>
+                        </div>
+
+                        <div class="social-item">
+                            <div class="contact-icon telegram-icon">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                            <div class="social-info">
+                                <h3>Telegram</h3>
+                                <a href="https://t.me/shoko_65" class="contact-link">@shoko_65</a>
+                            </div>
+                        </div>
+
+                        <div class="social-item">
+                            <div class="contact-icon facebook-icon">
+                                <i class="fab fa-facebook"></i>
+                            </div>
+                            <div class="social-info">
+                                <h3>Facebook</h3>
+                                <a href="https://facebook.com/shaibenisti" class="contact-link" target="_blank" rel="noopener noreferrer">Follow Me</a>
+                            </div>
+                        </div>
+
+                        <div class="social-item">
+                            <div class="contact-icon instagram-icon">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div class="social-info">
+                                <h3>Instagram</h3>
+                                <a href="https://instagram.com/shaibenisti" class="contact-link" target="_blank" rel="noopener noreferrer">@shaibenisti</a>
+                            </div>
+                        </div>
+
+                        <div class="social-item">
+                            <div class="contact-icon youtube-icon">
+                                <i class="fab fa-youtube"></i>
+                            </div>
+                            <div class="social-info">
+                                <h3>YouTube</h3>
+                                <a href="https://www.youtube.com/@shai_benisti2" class="contact-link" target="_blank" rel="noopener noreferrer">Subscribe</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
