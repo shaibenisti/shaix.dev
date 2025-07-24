@@ -69,6 +69,13 @@ body {
     box-shadow: 0 0 10px rgba(139, 69, 255, 0.5);
 }
 
+/* Hide scroll progress on very small screens to avoid conflicts */
+@media (max-width: 480px) {
+    .scroll-progress {
+        display: none;
+    }
+}
+
 /* Navigation */
 .navbar {
     position: fixed;
@@ -1144,6 +1151,18 @@ body:has(.payment-grid) .card:hover::before {
 
     .nav-controls {
         gap: 0.5rem;
+    }
+
+    /* Mobile nav-brand fixes */
+    .nav-brand {
+        font-size: 1rem;
+        gap: 0.3rem;
+    }
+    
+    .nav-brand-img {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
     }
 
     .main-content {
@@ -2633,6 +2652,16 @@ ontact Page Styles */
         padding: 1rem;
         margin: 0 auto 1rem;
         border-radius: 12px;
+    }
+    
+    /* Ensure typing animation doesn't break on mobile */
+    .typing-text {
+        opacity: 1 !important;
+        animation: none !important;
+    }
+    
+    .cursor {
+        display: none;
     }
     
     .service-item,

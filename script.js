@@ -483,6 +483,11 @@ function initSmoothScrolling() {
 
 // Add intersection observer for fade-in animations
 function initScrollAnimations() {
+    // Only run on desktop to avoid mobile issues
+    if (window.innerWidth <= 768) {
+        return; // Skip animations on mobile
+    }
+    
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -497,12 +502,16 @@ function initScrollAnimations() {
         });
     }, observerOptions);
 
-    // Observe service items, contact items, etc.
-    document.querySelectorAll('.service-item, .contact-item, .tech-item, .feature-item').forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(30px)';
-        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(item);
+    // Only observe specific elements that exist and are safe to animate
+    const animatableElements = document.querySelectorAll('.service-item, .tech-item');
+    animatableElements.forEach(item => {
+        // Double check the element exists and is not a critical layout element
+        if (item && !item.closest('.navbar') && !item.closest('.hero-section')) {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(item);
+        }
     });
 }
 
@@ -574,5 +583,22 @@ function showFloatingNotification(message) {
 
 // Initialize scroll animations
 document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(initScrollAnimations, 500);
+    // Ensure all critical elements are visible on mobile
+    if (window.innerWidth <= 768) {
+        ensureMobileVisibility();
+    } else {
+        setTimeout(initScrollAnimations, 500);
+    }
 });
+
+// Ensure all important elements are visible on mobile
+function ensureMobileVisibility() {
+    const criticalElements = document.querySelectorAll('.card, .hero-section, .main-content, .subtitle, .services-section, .tech-section, .contact-header, .payment-header');
+    criticalElements.forEach(element => {
+        if (element) {
+            element.style.opacity = '1';
+            element.style.transform = 'none';
+            element.style.visibility = 'visible';
+        }
+    });
+}
