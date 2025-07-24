@@ -49,6 +49,26 @@ body {
     height: 100%;
 }
 
+/* Scroll Progress Indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), #00d4aa);
+    width: 0%;
+    transition: width 0.2s ease;
+    box-shadow: 0 0 10px rgba(139, 69, 255, 0.5);
+}
+
 /* Navigation */
 .navbar {
     position: fixed;
@@ -73,13 +93,37 @@ body {
 
 .nav-brand {
     font-family: 'Space Grotesk', monospace;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.nav-brand:hover {
+    transform: scale(1.05);
+}
+
+.nav-brand-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid transparent;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    background-clip: padding-box;
+    transition: all 0.3s ease;
+}
+
+.nav-brand:hover .nav-brand-img {
+    transform: rotate(5deg) scale(1.1);
+    box-shadow: 0 4px 15px rgba(139, 69, 255, 0.4);
 }
 
 .nav-menu {
@@ -236,18 +280,24 @@ body {
 .avatar {
     width: 100px;
     height: 100px;
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 2rem;
-    font-family: 'Space Grotesk', monospace;
-    font-size: 2.5rem;
-    font-weight: 600;
     box-shadow: 0 0 40px rgba(139, 69, 255, 0.4);
     animation: avatarPulse 4s ease-in-out infinite;
-    color: white;
+    overflow: hidden;
+    border: 3px solid transparent;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    background-clip: padding-box;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 @keyframes avatarPulse {
@@ -274,9 +324,53 @@ body {
 }
 
 .subtitle {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     color: var(--text-secondary);
-    font-weight: 300;
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, 
+        var(--text-secondary) 0%, 
+        var(--text-primary) 50%, 
+        var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.subtitle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(139, 69, 255, 0.05) 0%,
+        rgba(59, 130, 246, 0.05) 50%,
+        rgba(0, 212, 170, 0.05) 100%);
+    z-index: -1;
+    border-radius: 16px;
+}
+
+.subtitle:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 40px rgba(139, 69, 255, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(139, 69, 255, 0.3);
 }
 
 /* Contact Page Styles - Modern Cards Theme */
@@ -930,6 +1024,32 @@ body:has(.payment-grid) .card:hover::before {
     background-clip: text;
 }
 
+.typing-text {
+    opacity: 0;
+    animation: typeIn 2s ease-in-out 0.5s forwards;
+}
+
+.cursor {
+    animation: blink 1s infinite;
+    color: var(--accent-primary);
+}
+
+@keyframes typeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
 .hero-subtitle {
     font-size: 1.2rem;
     color: var(--text-secondary);
@@ -1043,6 +1163,27 @@ body:has(.payment-grid) .card:hover::before {
 
     .hero-title {
         font-size: 2rem;
+    }
+
+    /* Avatar mobile adjustments */
+    .avatar {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+    }
+
+    .avatar img {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Subtitle mobile responsiveness */
+    .subtitle {
+        font-size: 1rem;
+        padding: 1.2rem 1.5rem;
+        margin: 0 auto 1.5rem;
+        max-width: 100%;
+        line-height: 1.5;
     }
 
     .social-grid,
@@ -2477,6 +2618,21 @@ ontact Page Styles */
     
     .section-title {
         font-size: 1.4rem;
+    }
+    
+    /* Avatar for very small screens */
+    .avatar {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 1rem;
+    }
+    
+    /* Subtitle for very small screens */
+    .subtitle {
+        font-size: 0.9rem;
+        padding: 1rem;
+        margin: 0 auto 1rem;
+        border-radius: 12px;
     }
     
     .service-item,

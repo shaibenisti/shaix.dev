@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
         initBackground();
         initNavigation();
+        initScrollProgress();
+        initSmoothScrolling();
         setLanguage(currentLang);
         setTheme(currentTheme);
 
@@ -445,4 +447,132 @@ window.addEventListener('load', () => {
         card.style.transform = '';
         card.style.perspective = '';
     });
+});
+
+// Scroll Progress Indicator
+function initScrollProgress() {
+    const progressBar = document.querySelector('.scroll-progress-bar');
+    if (!progressBar) return;
+
+    function updateProgress() {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        progressBar.style.width = scrollPercent + '%';
+    }
+
+    window.addEventListener('scroll', updateProgress);
+    updateProgress(); // Initial call
+}
+
+// Smooth Scrolling for Internal Links
+function initSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// Add intersection observer for fade-in animations
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe service items, contact items, etc.
+    document.querySelectorAll('.service-item, .contact-item, .tech-item, .feature-item').forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(item);
+    });
+}
+
+// Enhanced copy functionality with better feedback
+function enhancedCopyAddress(addressId, button) {
+    const addressElement = document.getElementById(addressId);
+    const address = addressElement.textContent;
+
+    navigator.clipboard.writeText(address).then(() => {
+        showEnhancedCopySuccess(button, address);
+        // Add haptic feedback on supported devices
+        if (navigator.vibrate) {
+            navigator.vibrate(50);
+        }
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = address;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showEnhancedCopySuccess(button, address);
+    });
+}
+
+function showEnhancedCopySuccess(button, address) {
+    const originalText = button.innerHTML;
+    button.classList.add('copied');
+    button.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
+
+    // Show floating notification
+    showFloatingNotification(`Address copied: ${address.substring(0, 12)}...`);
+
+    setTimeout(() => {
+        button.classList.remove('copied');
+        button.innerHTML = originalText;
+    }, 2000);
+}
+
+function showFloatingNotification(message) {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: linear-gradient(135deg, #00d4aa, #00b894);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3);
+        z-index: 10000;
+        transform: translateX(400px);
+        transition: transform 0.3s ease;
+        max-width: 300px;
+    `;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+
+    setTimeout(() => notification.style.transform = 'translateX(0)', 100);
+    setTimeout(() => {
+        notification.style.transform = 'translateX(400px)';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Initialize scroll animations
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(initScrollAnimations, 500);
 });
