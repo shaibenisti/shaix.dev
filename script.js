@@ -103,7 +103,14 @@ function setLanguage(lang) {
 
     const langIndicator = document.getElementById('lang-indicator');
     if (langIndicator) {
-        langIndicator.textContent = lang === 'en' ? '🇮🇱' : '🇺🇸';
+        // Force emoji flags using Unicode sequences that work better on desktop
+        if (lang === 'en') {
+            // When displaying English, show Israeli flag to switch TO Hebrew
+            langIndicator.textContent = '\uD83C\uDDEE\uD83C\uDDF1'; // 🇮🇱 as Unicode
+        } else {
+            // When displaying Hebrew, show US flag to switch TO English  
+            langIndicator.textContent = '\uD83C\uDDFA\uD83C\uDDF8'; // 🇺🇸 as Unicode
+        }
     }
 }
 

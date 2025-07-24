@@ -185,7 +185,7 @@ body {
     color: var(--text-primary) !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
-    font-size: 1rem !important;
+    font-size: 1.1rem !important;
     display: flex !important;
     align-items: center !important;
     gap: 0.5rem !important;
@@ -200,10 +200,59 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
 }
 
+/* Enhance flag visibility on desktop - Force emoji rendering */
+#lang-indicator {
+    font-size: 1.6rem !important;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: all 0.3s ease;
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", "EmojiOne Color", "Twemoji Mozilla", sans-serif !important;
+    line-height: 1.2 !important;
+    display: inline-block !important;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-feature-settings: "liga", "kern" !important;
+    font-feature-settings: "liga", "kern" !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    font-variant-emoji: emoji !important;
+    unicode-bidi: isolate !important;
+}
+
+.language-switch:hover #lang-indicator {
+    transform: scale(1.1);
+    filter: drop-shadow(0 3px 6px rgba(139, 69, 255, 0.4));
+}
+
+/* Additional fallback for desktop browsers that can't render emoji flags */
+@supports not (font-variant-emoji: emoji) {
+    #lang-indicator {
+        font-family: Arial, sans-serif !important;
+        font-size: 0.8rem !important;
+        font-weight: bold !important;
+        padding: 2px 4px !important;
+        border-radius: 3px !important;
+        background: linear-gradient(45deg, #0038b8, #ffffff) !important;
+        color: white !important;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.5) !important;
+    }
+}
+
 .language-switch:hover,
 .theme-switch:hover {
     background: var(--hover-bg);
     border-color: var(--accent-primary);
+}
+
+/* Enhance theme icon visibility */
+#theme-icon {
+    font-size: 1.2rem !important;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: all 0.3s ease;
+}
+
+.theme-switch:hover #theme-icon {
+    transform: scale(1.1) rotate(15deg);
+    filter: drop-shadow(0 3px 6px rgba(139, 69, 255, 0.4));
+    color: var(--accent-primary);
 }
 
 .mobile-menu-toggle {
